@@ -1,0 +1,47 @@
+/* ============================================
+   绿证交易平台 · Element Plus 主题定制（绿色环保主题）
+   通过覆盖 Element Plus CSS 变量实现统一品牌色
+   ============================================ */
+
+:root {
+  /* 品牌绿 */
+  --el-color-primary: #2e9e5b;
+  --el-color-primary-light-3: #63b884;
+  --el-color-primary-light-5: #96d2ab;
+  --el-color-primary-light-7: #c9ebd5;
+  --el-color-primary-light-8: #ddf3e5;
+  --el-color-primary-light-9: #eef9f2;
+  --el-color-primary-dark-2: #257f49;
+
+  /* 功能色微调，与品牌绿协调 */
+  --el-color-success: #52c41a;
+  --el-color-warning: #e6a23c;
+  --el-color-danger: #f56c6c;
+  --el-color-error: #f56c6c;
+  --el-color-info: #909399;
+
+  /* 圆角统一 */
+  --el-border-radius-base: 6px;
+  --el-border-radius-small: 4px;
+  --el-border-radius-round: 20px;
+
+  /* 字体 */
+  --el-font-family: MiSans, 'Helvetica Neue', Helvetica, 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+}
+
+/* 主按钮悬停/聚焦态 */
+.el-button--primary:hover,
+.el-button--primary:focus {
+  --el-button-hover-bg-color: var(--el-color-primary-light-3);
+  --el-button-hover-border-color: var(--el-color-primary-light-3);
+}
+
+/* 导航菜单激活态使用品牌绿 */
+.el-menu.el-menu--horizontal {
+  --el-menu-active-color: var(--el-color-primary);
+}
+
+.el-popper.is-light {
+  border-color: var(--el-border-color-light);
+}

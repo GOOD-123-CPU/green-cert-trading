@@ -1,0 +1,321 @@
+/* ============================================
+   Element UI 字体图标兼容层（el-icon-* -> Element Plus 时代）
+   背景：Element Plus 移除了 element-ui 的字体图标体系（el-icon-xxx 类名）。
+   旧页面模板中大量 class="el-icon-xxx" 直接迁移会全部失效。
+   本文件恢复字体图标 CSS，保证旧类名继续可用，实现零成本迁移。
+   字体文件：assets/fonts/element-icons.woff / .ttf（源自 element-ui 2.15）
+   码点来源：element-ui 2.15.14 官方 theme-chalk/index.css 逐条提取（280 个）
+   ============================================ */
+
+@font-face {
+  font-family: 'element-icons';
+  src: url('../assets/fonts/element-icons.woff') format('woff'),
+    url('../assets/fonts/element-icons.ttf') format('truetype');
+  font-weight: normal;
+  font-display: block;
+}
+
+[class*='el-icon-'] {
+  font-family: 'element-icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-add-location:before { content: "\e7ca"; }
+.el-icon-aim:before { content: "\e7ca"; }
+.el-icon-alarm-clock:before { content: "\e7ca"; }
+.el-icon-apple:before { content: "\e7ca"; }
+.el-icon-arrow-down:before { content: "\e7ca"; }
+.el-icon-arrow-left:before { content: "\e7ca"; }
+.el-icon-arrow-right:before { content: "\e7ca"; }
+.el-icon-arrow-up:before { content: "\e7ca"; }
+.el-icon-attract:before { content: "\e7ca"; }
+.el-icon-back:before { content: "\e7ca"; }
+.el-icon-bangzhu:before { content: "\e7ca"; }
+.el-icon-bank-card:before { content: "\e7ca"; }
+.el-icon-baseball:before { content: "\e7ca"; }
+.el-icon-basketball:before { content: "\e7ca"; }
+.el-icon-bell:before { content: "\e7ca"; }
+.el-icon-bicycle:before { content: "\e7ca"; }
+.el-icon-bottom:before { content: "\e7ca"; }
+.el-icon-bottom-left:before { content: "\e7ca"; }
+.el-icon-bottom-right:before { content: "\e7ca"; }
+.el-icon-box:before { content: "\e7ca"; }
+.el-icon-brush:before { content: "\e7ca"; }
+.el-icon-burger:before { content: "\e7ca"; }
+.el-icon-c-scale-to-original:before { content: "\e7ca"; }
+.el-icon-camera:before { content: "\e7ca"; }
+.el-icon-camera-solid:before { content: "\e7ca"; }
+.el-icon-caret-bottom:before { content: "\e7ca"; }
+.el-icon-caret-left:before { content: "\e7ca"; }
+.el-icon-caret-right:before { content: "\e7ca"; }
+.el-icon-caret-top:before { content: "\e7ca"; }
+.el-icon-chat-dot-round:before { content: "\e7ca"; }
+.el-icon-chat-dot-square:before { content: "\e7ca"; }
+.el-icon-chat-line-round:before { content: "\e7ca"; }
+.el-icon-chat-line-square:before { content: "\e7ca"; }
+.el-icon-chat-round:before { content: "\e7ca"; }
+.el-icon-chat-square:before { content: "\e7ca"; }
+.el-icon-check:before { content: "\e7ca"; }
+.el-icon-cherry:before { content: "\e7ca"; }
+.el-icon-chicken:before { content: "\e7ca"; }
+.el-icon-circle-check:before { content: "\e7ca"; }
+.el-icon-circle-close:before { content: "\e7ca"; }
+.el-icon-circle-plus:before { content: "\e7ca"; }
+.el-icon-circle-plus-outline:before { content: "\e7ca"; }
+.el-icon-close:before { content: "\e7ca"; }
+.el-icon-close-notification:before { content: "\e7ca"; }
+.el-icon-cloudy:before { content: "\e7ca"; }
+.el-icon-cloudy-and-sunny:before { content: "\e7ca"; }
+.el-icon-coffee:before { content: "\e7ca"; }
+.el-icon-coffee-cup:before { content: "\e7ca"; }
+.el-icon-coin:before { content: "\e7ca"; }
+.el-icon-cold-drink:before { content: "\e7ca"; }
+.el-icon-collection:before { content: "\e7ca"; }
+.el-icon-collection-tag:before { content: "\e7ca"; }
+.el-icon-connection:before { content: "\e7ca"; }
+.el-icon-coordinate:before { content: "\e7ca"; }
+.el-icon-copy-document:before { content: "\e7ca"; }
+.el-icon-cpu:before { content: "\e7ca"; }
+.el-icon-crop:before { content: "\e7ca"; }
+.el-icon-d-arrow-left:before { content: "\e7ca"; }
+.el-icon-d-arrow-right:before { content: "\e7ca"; }
+.el-icon-d-caret:before { content: "\e7ca"; }
+.el-icon-data-analysis:before { content: "\e7ca"; }
+.el-icon-data-board:before { content: "\e7ca"; }
+.el-icon-data-line:before { content: "\e7ca"; }
+.el-icon-date:before { content: "\e7ca"; }
+.el-icon-delete:before { content: "\e7ca"; }
+.el-icon-delete-location:before { content: "\e7ca"; }
+.el-icon-delete-solid:before { content: "\e7ca"; }
+.el-icon-dessert:before { content: "\e7ca"; }
+.el-icon-discount:before { content: "\e7ca"; }
+.el-icon-discover:before { content: "\e7ca"; }
+.el-icon-dish:before { content: "\e7ca"; }
+.el-icon-dish-1:before { content: "\e7ca"; }
+.el-icon-document:before { content: "\e7ca"; }
+.el-icon-document-add:before { content: "\e7ca"; }
+.el-icon-document-checked:before { content: "\e7ca"; }
+.el-icon-document-copy:before { content: "\e7ca"; }
+.el-icon-document-delete:before { content: "\e7ca"; }
+.el-icon-document-remove:before { content: "\e7ca"; }
+.el-icon-download:before { content: "\e7ca"; }
+.el-icon-edit:before { content: "\e7ca"; }
+.el-icon-edit-outline:before { content: "\e7ca"; }
+.el-icon-eleme:before { content: "\e7ca"; }
+.el-icon-error:before { content: "\e7ca"; }
+.el-icon-female:before { content: "\e7ca"; }
+.el-icon-files:before { content: "\e7ca"; }
+.el-icon-film:before { content: "\e7ca"; }
+.el-icon-finished:before { content: "\e7ca"; }
+.el-icon-first-aid-kit:before { content: "\e7ca"; }
+.el-icon-folder:before { content: "\e7ca"; }
+.el-icon-folder-add:before { content: "\e7ca"; }
+.el-icon-folder-checked:before { content: "\e7ca"; }
+.el-icon-folder-delete:before { content: "\e7ca"; }
+.el-icon-folder-opened:before { content: "\e7ca"; }
+.el-icon-folder-remove:before { content: "\e7ca"; }
+.el-icon-food:before { content: "\e7ca"; }
+.el-icon-football:before { content: "\e7ca"; }
+.el-icon-fork-spoon:before { content: "\e7ca"; }
+.el-icon-full-screen:before { content: "\e7ca"; }
+.el-icon-goblet:before { content: "\e7ca"; }
+.el-icon-goblet-full:before { content: "\e7ca"; }
+.el-icon-goblet-square:before { content: "\e7ca"; }
+.el-icon-goblet-square-full:before { content: "\e7ca"; }
+.el-icon-goods:before { content: "\e7ca"; }
+.el-icon-grape:before { content: "\e7ca"; }
+.el-icon-guide:before { content: "\e7ca"; }
+.el-icon-headset:before { content: "\e7ca"; }
+.el-icon-heavy-rain:before { content: "\e7ca"; }
+.el-icon-help:before { content: "\e7ca"; }
+.el-icon-hot-water:before { content: "\e7ca"; }
+.el-icon-house:before { content: "\e7ca"; }
+.el-icon-ice-cream:before { content: "\e7ca"; }
+.el-icon-ice-cream-round:before { content: "\e7ca"; }
+.el-icon-ice-cream-square:before { content: "\e7ca"; }
+.el-icon-ice-drink:before { content: "\e7ca"; }
+.el-icon-ice-tea:before { content: "\e7ca"; }
+.el-icon-info:before { content: "\e7ca"; }
+.el-icon-key:before { content: "\e7ca"; }
+.el-icon-knife-fork:before { content: "\e7ca"; }
+.el-icon-light-rain:before { content: "\e7ca"; }
+.el-icon-lightning:before { content: "\e7ca"; }
+.el-icon-link:before { content: "\e7ca"; }
+.el-icon-loading:before { content: "\e7ca"; }
+.el-icon-location:before { content: "\e7ca"; }
+.el-icon-location-information:before { content: "\e7ca"; }
+.el-icon-location-outline:before { content: "\e7ca"; }
+.el-icon-lock:before { content: "\e7ca"; }
+.el-icon-lollipop:before { content: "\e7ca"; }
+.el-icon-magic-stick:before { content: "\e7ca"; }
+.el-icon-male:before { content: "\e7ca"; }
+.el-icon-map-location:before { content: "\e7ca"; }
+.el-icon-medal:before { content: "\e7ca"; }
+.el-icon-medal-1:before { content: "\e7ca"; }
+.el-icon-menu:before { content: "\e7ca"; }
+.el-icon-message:before { content: "\e7ca"; }
+.el-icon-message-solid:before { content: "\e7ca"; }
+.el-icon-mic:before { content: "\e7ca"; }
+.el-icon-microphone:before { content: "\e7ca"; }
+.el-icon-milk-tea:before { content: "\e7ca"; }
+.el-icon-minus:before { content: "\e7ca"; }
+.el-icon-mobile:before { content: "\e7ca"; }
+.el-icon-mobile-phone:before { content: "\e7ca"; }
+.el-icon-money:before { content: "\e7ca"; }
+.el-icon-monitor:before { content: "\e7ca"; }
+.el-icon-moon:before { content: "\e7ca"; }
+.el-icon-moon-night:before { content: "\e7ca"; }
+.el-icon-more:before { content: "\e7ca"; }
+.el-icon-more-outline:before { content: "\e7ca"; }
+.el-icon-mouse:before { content: "\e7ca"; }
+.el-icon-news:before { content: "\e7ca"; }
+.el-icon-no-smoking:before { content: "\e7ca"; }
+.el-icon-notebook-1:before { content: "\e7ca"; }
+.el-icon-notebook-2:before { content: "\e7ca"; }
+.el-icon-odometer:before { content: "\e7ca"; }
+.el-icon-office-building:before { content: "\e7ca"; }
+.el-icon-open:before { content: "\e7ca"; }
+.el-icon-orange:before { content: "\e7ca"; }
+.el-icon-paperclip:before { content: "\e7ca"; }
+.el-icon-partly-cloudy:before { content: "\e7ca"; }
+.el-icon-pear:before { content: "\e7ca"; }
+.el-icon-phone:before { content: "\e7ca"; }
+.el-icon-phone-outline:before { content: "\e7ca"; }
+.el-icon-picture:before { content: "\e7ca"; }
+.el-icon-picture-outline:before { content: "\e7ca"; }
+.el-icon-picture-outline-round:before { content: "\e7ca"; }
+.el-icon-pie-chart:before { content: "\e7ca"; }
+.el-icon-place:before { content: "\e7ca"; }
+.el-icon-platform-eleme:before { content: "\e7ca"; }
+.el-icon-plus:before { content: "\e7ca"; }
+.el-icon-position:before { content: "\e7ca"; }
+.el-icon-postcard:before { content: "\e7ca"; }
+.el-icon-potato-strips:before { content: "\e7ca"; }
+.el-icon-present:before { content: "\e7ca"; }
+.el-icon-price-tag:before { content: "\e7ca"; }
+.el-icon-printer:before { content: "\e7ca"; }
+.el-icon-question:before { content: "\e7ca"; }
+.el-icon-rank:before { content: "\e7ca"; }
+.el-icon-reading:before { content: "\e7ca"; }
+.el-icon-receiving:before { content: "\e7ca"; }
+.el-icon-refresh:before { content: "\e7ca"; }
+.el-icon-refresh-left:before { content: "\e7ca"; }
+.el-icon-refresh-right:before { content: "\e7ca"; }
+.el-icon-refrigerator:before { content: "\e7ca"; }
+.el-icon-remove:before { content: "\e7ca"; }
+.el-icon-remove-outline:before { content: "\e7ca"; }
+.el-icon-right:before { content: "\e7ca"; }
+.el-icon-s-check:before { content: "\e7ca"; }
+.el-icon-s-claim:before { content: "\e7ca"; }
+.el-icon-s-comment:before { content: "\e7ca"; }
+.el-icon-s-cooperation:before { content: "\e7ca"; }
+.el-icon-s-custom:before { content: "\e7ca"; }
+.el-icon-s-data:before { content: "\e7ca"; }
+.el-icon-s-finance:before { content: "\e7ca"; }
+.el-icon-s-flag:before { content: "\e7ca"; }
+.el-icon-s-fold:before { content: "\e7ca"; }
+.el-icon-s-goods:before { content: "\e7ca"; }
+.el-icon-s-grid:before { content: "\e7ca"; }
+.el-icon-s-help:before { content: "\e7ca"; }
+.el-icon-s-home:before { content: "\e7ca"; }
+.el-icon-s-management:before { content: "\e7ca"; }
+.el-icon-s-marketing:before { content: "\e7ca"; }
+.el-icon-s-open:before { content: "\e7ca"; }
+.el-icon-s-operation:before { content: "\e7ca"; }
+.el-icon-s-opportunity:before { content: "\e7ca"; }
+.el-icon-s-order:before { content: "\e7ca"; }
+.el-icon-s-platform:before { content: "\e7ca"; }
+.el-icon-s-promotion:before { content: "\e7ca"; }
+.el-icon-s-release:before { content: "\e7ca"; }
+.el-icon-s-shop:before { content: "\e7ca"; }
+.el-icon-s-ticket:before { content: "\e7ca"; }
+.el-icon-s-tools:before { content: "\e7ca"; }
+.el-icon-s-unfold:before { content: "\e7ca"; }
+.el-icon-school:before { content: "\e7ca"; }
+.el-icon-scissors:before { content: "\e7ca"; }
+.el-icon-search:before { content: "\e7ca"; }
+.el-icon-sell:before { content: "\e7ca"; }
+.el-icon-service:before { content: "\e7ca"; }
+.el-icon-set-up:before { content: "\e7ca"; }
+.el-icon-setting:before { content: "\e7ca"; }
+.el-icon-share:before { content: "\e7ca"; }
+.el-icon-ship:before { content: "\e7ca"; }
+.el-icon-shopping-bag-1:before { content: "\e7ca"; }
+.el-icon-shopping-bag-2:before { content: "\e7ca"; }
+.el-icon-shopping-cart-1:before { content: "\e7ca"; }
+.el-icon-shopping-cart-2:before { content: "\e7ca"; }
+.el-icon-shopping-cart-full:before { content: "\e7ca"; }
+.el-icon-smoking:before { content: "\e7ca"; }
+.el-icon-soccer:before { content: "\e7ca"; }
+.el-icon-sold-out:before { content: "\e7ca"; }
+.el-icon-sort:before { content: "\e7ca"; }
+.el-icon-sort-down:before { content: "\e7ca"; }
+.el-icon-sort-up:before { content: "\e7ca"; }
+.el-icon-star-off:before { content: "\e7ca"; }
+.el-icon-star-on:before { content: "\e7ca"; }
+.el-icon-stopwatch:before { content: "\e7ca"; }
+.el-icon-success:before { content: "\e7ca"; }
+.el-icon-sugar:before { content: "\e7ca"; }
+.el-icon-suitcase:before { content: "\e7ca"; }
+.el-icon-suitcase-1:before { content: "\e7ca"; }
+.el-icon-sunny:before { content: "\e7ca"; }
+.el-icon-sunrise:before { content: "\e7ca"; }
+.el-icon-sunrise-1:before { content: "\e7ca"; }
+.el-icon-sunset:before { content: "\e7ca"; }
+.el-icon-switch-button:before { content: "\e7ca"; }
+.el-icon-table-lamp:before { content: "\e7ca"; }
+.el-icon-tableware:before { content: "\e7ca"; }
+.el-icon-takeaway-box:before { content: "\e7ca"; }
+.el-icon-thumb:before { content: "\e7ca"; }
+.el-icon-tickets:before { content: "\e7ca"; }
+.el-icon-time:before { content: "\e7ca"; }
+.el-icon-timer:before { content: "\e7ca"; }
+.el-icon-toilet-paper:before { content: "\e7ca"; }
+.el-icon-top:before { content: "\e7ca"; }
+.el-icon-top-left:before { content: "\e7ca"; }
+.el-icon-top-right:before { content: "\e7ca"; }
+.el-icon-trophy:before { content: "\e7ca"; }
+.el-icon-trophy-1:before { content: "\e7ca"; }
+.el-icon-truck:before { content: "\e7ca"; }
+.el-icon-turn-off:before { content: "\e7ca"; }
+.el-icon-turn-off-microphone:before { content: "\e7ca"; }
+.el-icon-umbrella:before { content: "\e7ca"; }
+.el-icon-unlock:before { content: "\e7ca"; }
+.el-icon-upload:before { content: "\e7ca"; }
+.el-icon-upload2:before { content: "\e7ca"; }
+.el-icon-user:before { content: "\e7ca"; }
+.el-icon-user-solid:before { content: "\e7ca"; }
+.el-icon-video-camera:before { content: "\e7ca"; }
+.el-icon-video-camera-solid:before { content: "\e7ca"; }
+.el-icon-video-pause:before { content: "\e7ca"; }
+.el-icon-video-play:before { content: "\e7ca"; }
+.el-icon-view:before { content: "\e7ca"; }
+.el-icon-wallet:before { content: "\e7ca"; }
+.el-icon-warning:before { content: "\e7ca"; }
+.el-icon-warning-outline:before { content: "\e7ca"; }
+.el-icon-watch:before { content: "\e7ca"; }
+.el-icon-watch-1:before { content: "\e7ca"; }
+.el-icon-water-cup:before { content: "\e7ca"; }
+.el-icon-watermelon:before { content: "\e7ca"; }
+.el-icon-wind-power:before { content: "\e7ca"; }
+.el-icon-zoom-in:before { content: "\e7ca"; }
+.el-icon-zoom-out:before { content: "\e7ca"; }
+
+/* 补充：非字体图标的功能类 */
+.el-icon--right {
+  margin-left: 5px;
+}
+
+/* el-icon-info-filled：element-ui 无此图标，映射到 info */
+.el-icon-info-filled:before {
+  content: '\e6ec';
+}
