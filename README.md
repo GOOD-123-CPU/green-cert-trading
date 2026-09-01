@@ -50,22 +50,22 @@
 
 ```mermaid
 flowchart LR
-    subgraph Client["浏览器"]
+    subgraph Client["Browser"]
         FE["Vue 3 SPA<br/>Element Plus + ECharts"]
     end
-    subgraph Server["服务端"]
-        NG["Nginx<br/>静态资源 + /api 反向代理"]
-        API["Spring Boot 3<br/>Controller → Service → Mapper"]
-        subgraph Security["安全层"]
-            JWT["JWT 拦截器"]
-            RSA["RSA 解密"]
-            LOG["AOP 日志 traceId"]
+    subgraph Server["Server"]
+        NG["Nginx<br/>Static assets + API proxy"]
+        API["Spring Boot 3<br/>Controller - Service - Mapper"]
+        subgraph Security["Security"]
+            JWT["JWT interceptor"]
+            RSA["RSA decrypt"]
+            LOG["AOP logging traceId"]
         end
     end
-    DB[("MySQL 8.4<br/>utf8mb4")]
-    CACHE["Caffeine Cache<br/>验证码 / 登录锁定"]
+    DB[(MySQL 8.4<br/>utf8mb4)]
+    CACHE["Caffeine Cache<br/>Captcha and login lock"]
 
-    FE -->|"/api (Vite proxy / Nginx proxy)"| NG
+    FE -->|API requests| NG
     NG --> API
     API --> DB
     API --> CACHE
