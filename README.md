@@ -1,7 +1,7 @@
 # 绿证交易平台（Green Certificate Trading Platform）
 
-> 基于 Spring Boot 3 + Vue 3 / Element Plus / Vite 的绿色电力证书（绿证）交易系统。
-> 前台商城 + 后台管理双端完备，内置拼团、临期促销、长期协议、协同过滤推荐等完整业务闭环，可作为绿证/碳资产类电商交易系统的二次开发模板。
+> 基于 Spring Boot 3、Vue 3、Element Plus 和 Vite 的绿色电力证书（绿证）交易系统。
+> 项目包含前台商城、后台管理、拼团、临期促销、长期协议和协同过滤推荐等功能，可用于学习、课程设计与二次开发。
 
 [![CI](https://github.com/GOOD-123-CPU/green-cert-trading/actions/workflows/ci.yml/badge.svg)](./.github/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -10,7 +10,7 @@
 [![Vue](https://img.shields.io/badge/Vue-3.4.x-4FC08D.svg)](https://vuejs.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**English** | A full-stack green electricity certificate (GEC) trading system built with Spring Boot 3 and Vue 3, featuring a customer-facing marketplace and an admin console with role-based dynamic menus. Ideal as a production-grade template for carbon-asset / renewable-energy-certificate e-commerce platforms.
+**English** | A full-stack green electricity certificate (GEC) trading system built with Spring Boot 3 and Vue 3. It includes a customer-facing marketplace, an admin console, role-based menus, group buying, promotions and recommendation features.
 
 ---
 
@@ -48,37 +48,42 @@
 
 ## 🏗️ 系统架构
 
-```mermaid
-flowchart LR
-    subgraph Client["Browser"]
-        FE["Vue 3 SPA<br/>Element Plus + ECharts"]
-    end
-    subgraph Server["Server"]
-        NG["Nginx<br/>Static assets + API proxy"]
-        API["Spring Boot 3<br/>Controller - Service - Mapper"]
-        subgraph Security["Security"]
-            JWT["JWT interceptor"]
-            RSA["RSA decrypt"]
-            LOG["AOP logging traceId"]
-        end
-    end
-    DB[(MySQL 8.4<br/>utf8mb4)]
-    CACHE["Caffeine Cache<br/>Captcha and login lock"]
+> 为保证 GitHub、Gitee 及各种 Markdown 阅读器都能正常显示，此处使用纯文本架构图，不依赖 Mermaid 插件。
 
-    FE -->|API requests| NG
-    NG --> API
-    API --> DB
-    API --> CACHE
-    JWT -.-> API
-    RSA -.-> API
-    LOG -.-> API
+```text
+Browser
+  |
+  | HTTP :8080
+  v
+Nginx
+  |-- serves Vue 3 static files
+  |
+  | /api reverse proxy
+  v
+Spring Boot 3 :1234
+  |-- Controller -> Service -> Mapper
+  |-- JWT authentication / RSA login decrypt
+  |-- AOP request logging with traceId
+  |-- Caffeine cache (captcha and login lock)
+  |
+  v
+MySQL 8.4 (utf8mb4)
 ```
+
+| 组件 | 主要职责 |
+|---|---|
+| Vue 3 + Element Plus | 前台商城和后台管理界面 |
+| Nginx | 托管前端静态资源，并将 `/api` 请求转发到后端 |
+| Spring Boot 3 | 业务接口、认证鉴权、参数校验和日志记录 |
+| MyBatis-Plus | 数据访问与对象映射 |
+| MySQL 8.4 | 业务数据和演示数据持久化 |
+| Caffeine | 验证码、登录失败次数和登录锁定等本地缓存 |
 
 ## 🛠️ 技术栈
 
 | 层级 | 技术 | 选型理由 |
 |---|---|---|
-| 后端 | Spring Boot 3.4（Java 17+） | LTS 长期支持，原生可观测性 |
+| 后端 | Spring Boot 3.4.1（Java 17+） | 成熟的 Web 生态，便于构建和测试 |
 | ORM | MyBatis-Plus 3.5 | CRUD 零样板代码，Lambda 条件构造器类型安全 |
 | 认证 | java-jwt（HMAC256）+ 拦截器 | 无状态水平扩展；密钥环境变量注入 |
 | 缓存 | Caffeine | 进程内高性能缓存，零部署成本，适合单实例起步 |
@@ -86,23 +91,57 @@ flowchart LR
 | 前端 | Vue 3.4 + Vite 5 + Element Plus 2.9 | Composition API 生态、秒级冷启动 |
 | 状态 | Vue Router 4 + Vuex 4 | 官方推荐组合 |
 | 数据库 | MySQL 8.4（utf8mb4） | 完整 Unicode 支持 |
-| 部署 | Docker Compose + GitHub Actions CI | 一键编排三容器，推送即构建 |
+| 部署 | Docker Compose + GitHub Actions CI | 本地容器编排，提交后自动检查构建 |
 
 ## 🚀 快速开始
 
 ### 方式一：Docker Compose（推荐）
 
-```bash
-# 1. 准备 .env（可选，不配置则使用默认演示值）
-cp .env.example .env
+当前 Compose 会把本地生成的 `vue3/dist` 挂载到 Nginx，因此第一次启动前需要先构建前端。
 
-# 2. 一键启动（自动导入演示数据库）
+**Windows PowerShell（在仓库根目录执行）**
+
+```powershell
+# 1. 创建本地环境配置；.env 已被 Git 忽略
+Copy-Item .env.example 系统/销售系统/.env
+
+# 2. 安装依赖并构建前端
+Set-Location 系统/销售系统/源码/vue3
+npm.cmd ci
+npm.cmd run build
+
+# 3. 返回 Compose 所在目录并启动三个容器
+Set-Location ../..
 docker compose up -d --build
+```
 
-# 3. 访问
-# 前台/后台:  http://localhost:8080 （Nginx 服务前端，/api 反代到后端）
-# 后端 API:  http://localhost:1234/api
-# API 文档:  http://localhost:1234/swagger-ui.html
+**macOS / Linux（在仓库根目录执行）**
+
+```bash
+# 1. 创建本地环境配置；.env 已被 Git 忽略
+cp .env.example 系统/销售系统/.env
+
+# 2. 安装依赖并构建前端
+(cd 系统/销售系统/源码/vue3 && npm ci && npm run build)
+
+# 3. 启动 MySQL、后端和 Nginx
+cd 系统/销售系统
+docker compose up -d --build
+```
+
+启动完成后访问：
+
+| 服务 | 地址 |
+|---|---|
+| 前台商城 / 后台管理 | <http://localhost:8080> |
+| 后端 API | <http://localhost:1234/api> |
+| Swagger UI | <http://localhost:1234/swagger-ui.html> |
+
+查看容器状态或停止服务：
+
+```bash
+docker compose ps
+docker compose down
 ```
 
 ### 方式二：本地开发
@@ -111,7 +150,7 @@ docker compose up -d --build
 
 ```sql
 CREATE DATABASE db_aps DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
--- 然后导入 数据库/db_aps_绿证版.sql
+-- 然后导入 系统/销售系统/数据库/db_aps_绿证版.sql
 ```
 
 **2. 后端（JDK 17+，端口 1234）**
@@ -124,14 +163,25 @@ export APP_JWT_SECRET=$(openssl rand -hex 32)
 mvn spring-boot:run
 ```
 
+Windows PowerShell 请使用下面的环境变量写法：
+
+```powershell
+Set-Location 系统/销售系统/源码/springboot
+$env:DB_PASSWORD = "你的数据库密码"
+$env:APP_JWT_SECRET = "请替换为至少 32 字节的随机字符串"
+mvn spring-boot:run
+```
+
 **3. 前端（Node 18+，Vite 开发端口 8081）**
 
 ```bash
 cd 系统/销售系统/源码/vue3
-npm install
+npm ci
 npm run dev
 # vite devServer 已配置 /api 代理到 http://localhost:1234
 ```
+
+Windows PowerShell 中如遇脚本执行策略限制，请将 `npm` 改为 `npm.cmd`。
 
 ### 演示账号
 
@@ -163,31 +213,42 @@ npm run dev
 ## 📁 项目结构
 
 ```
-├── 数据库/
-│   └── db_aps_绿证版.sql        # 建表 + 演示数据（含拼团/长期协议表）
-├── 源码/
-│   ├── springboot/              # 后端 Spring Boot 工程
-│   │   ├── src/main/java/.../   # controller / service / mapper / entity / config
-│   │   └── src/test/java/.../   # JUnit 5 + Mockito 单元测试
-│   ├── vue3/                    # 前端 Vue 3 + Vite + Element Plus 工程
-│   │   ├── src/views/front/     # 前台商城页面
-│   │   └── eslint.config.js     # ESLint 9 flat config
-│   ├── Dockerfile               # 多阶段构建（后端+前端）
-│   └── docker-compose.yml / nginx.conf
+├── 系统/销售系统/
+│   ├── 数据库/
+│   │   └── db_aps_绿证版.sql       # 建表和演示数据
+│   ├── 源码/
+│   │   ├── springboot/             # Spring Boot 后端工程
+│   │   │   ├── src/main/java/      # 业务代码
+│   │   │   └── src/test/java/      # JUnit 5 + Mockito 测试
+│   │   ├── vue3/                   # Vue 3 前端工程
+│   │   │   ├── src/views/front/    # 前台商城页面
+│   │   │   └── eslint.config.js    # ESLint 9 配置
+│   │   └── Dockerfile              # 后端和前端多阶段构建
+│   ├── docker-compose.yml           # MySQL、后端和 Nginx 编排
+│   └── nginx.conf                   # 静态资源和 API 反向代理
 ├── docs/                        # 架构 / API / 部署文档
-├── .github/workflows/ci.yml     # CI：后端 Maven 构建+测试 + Vue3 前端构建
-└── SECURITY.md / CHANGELOG.md / CONTRIBUTING.md
+├── .github/workflows/ci.yml     # Maven 测试、前端检查与构建
+├── .env.example                 # 本地环境变量示例
+└── SECURITY.md / CHANGELOG.md / CONTRIBUTING.md / LICENSE
 ```
 
 ## 🧪 测试
 
 ```bash
 # 后端单元测试（JUnit 5 + Mockito，无需数据库）
-cd 系统/销售系统/源码/springboot && mvn test
+(cd 系统/销售系统/源码/springboot && mvn test)
 
-# 前端代码检查
-cd 系统/销售系统/源码/vue3 && npm run lint
+# 前端代码检查与构建
+(cd 系统/销售系统/源码/vue3 && npm run lint && npm run build)
 ```
+
+在 Windows PowerShell 中可分别进入对应目录，使用 `mvn test`、`npm.cmd run lint` 和 `npm.cmd run build`。
+
+## 🌐 关于 GitHub 在线预览
+
+GitHub 仓库页面用于查看源码、README 和 CI 结果，本身不会运行 Java 后端、MySQL 或完整业务系统。GitHub Pages 只能托管静态前端，不能单独承载本项目的 Spring Boot 和 MySQL 服务。
+
+需要在线体验完整系统时，请将前端、后端和数据库部署到服务器或支持容器的云平台，再把公开访问地址填写到仓库右侧的 **About → Website**。在部署完成前，README 中不应填写不存在的演示地址。
 
 ## ❓ FAQ
 
